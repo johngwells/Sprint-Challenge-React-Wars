@@ -12,5 +12,14 @@
 .card {
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 40%;
+}
+
+.card-center {
+  display: flex;
+  justify-content: center;
+}
+
+Button {
+
 }

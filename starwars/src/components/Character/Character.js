@@ -21,7 +21,7 @@ function Character(
     
   console.log(homeworld);
   return (
-    <div>
+    <div className='card-center'>
     <Card className='card'>
       <CardTitle>{name}</CardTitle>
       <CardSubtitle>Birth Year: {birth_year}</CardSubtitle>

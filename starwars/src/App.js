@@ -37,8 +37,8 @@ const App = () => {
   }, [])
 
   return (
-    <div className="App">
-      <h1 className="Header">React Wars</h1>
+    <div className='App'>
+      <h1 className='Header'>React Wars</h1>
       {data.map((character, index) => (
         <Character 
           key={index} 
