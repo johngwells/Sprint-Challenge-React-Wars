@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Button } from 'reactstrap';
 
-function NextPage() {
+function NextPage({page}) {
   return (
-    <Button>Next Page</Button>
+    <Button></Button>
   );
 }
 

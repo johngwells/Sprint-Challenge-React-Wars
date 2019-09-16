@@ -15,26 +15,28 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
   const [data, setData] = useState([]);
-  const [planets, setPlanets] = useState([]);
-  // const [next, setNext] = (0);
+  const [planets, setPlanets] = useState('');
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     axios.all([
-      axios.get('https://swapi.co/api/people/'),
-      axios.get('https://swapi.co/api/planets/')
+      axios.get(`https://swapi.co/api/people/?page=${page}`),
+      axios.get('https://swapi.co/api/planets/'),
     ])
     .then(axios.spread((characterRes, planetRes) => {
       console.log(characterRes);
-      console.log(planetRes);
+      // console.log(planetRes);
+      
       const characters = characterRes.data.results;
       const planets = planetRes.data.results;
       setData(characters);
       setPlanets(planets);
+      // console.log('planets', planets);
     }))
     .catch(error => {
       console.log('Data not returned', error);
     })
-  }, [])
+  }, [page])
 
   return (
     <div className='App'>
@@ -48,9 +50,11 @@ const App = () => {
           mass={character.mass}
           eye_color={character.eye_color}
           skin_color={character.skin_color}
+          homeworld ={character.homeworld}
         />
       ))}
-      <NextPage />
+
+      <button type='button' onClick={() => setPage(page + 1)}>Next Page</button>
     </div>
   );
 }
